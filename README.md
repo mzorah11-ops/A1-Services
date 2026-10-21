@@ -1,8 +1,8 @@
 # A1 Services (Telford)
 
-Single-page site for A1 Services: electrical, gas heating, plumbing, EICR and EPC. It is a clone of the layout of
-`crox.framer.website` (grey/charcoal/orange, 4px frame lines, giant wordmark) re-themed for A1, with the logo's blue as a
-second accent and the sections reordered trust-first.
+Single-page site for A1 Services: electrical, gas heating, plumbing, EICR and EPC. It keeps the colours and fonts of the
+`crox.framer.website` design (grey, white, charcoal and orange, with the logo's blue) but is deliberately calm: normal-sized
+type, thin light lines, one idea per section, and very little motion.
 
 Everything lives in `index.html` (CSS and JS inline) plus `images/`.
 
@@ -12,15 +12,31 @@ Everything lives in `index.html` (CSS and JS inline) plus `images/`.
 node serve.mjs        # http://localhost:8086/
 ```
 
+## Sections
+
+Each section has a plain heading and one sentence saying what it is for. The sections alternate white and grey so each one
+reads as its own block, and the nav marks which one you are in.
+
+| Nav name | Section | Purpose |
+| --- | --- | --- |
+| (top) | Hero | What A1 is, and the two next steps: call, or see the services |
+| About | About A1 Services | Who we are and what we are registered with, with four key facts |
+| Services | Our services | The five services and what each includes |
+| Who we help | Who we help | Homes and businesses |
+| Why choose us | Why choose us | The Google rating, what customers say, and the three promises |
+| How it works | How it works | The four steps from first call to finished job |
+| FAQs | FAQs | Quick answers before calling |
+| (bottom) | Get in touch | Phone, address, email and opening hours |
+
 ## Fill in the missing details
 
 Edit the `SETTINGS` block at the top of the last `<script>`. Anything left empty shows as a dashed `[Add ...]` placeholder.
 
 | Setting | Shows in |
 | --- | --- |
-| `email` | footer contact column |
-| `hours` | footer contact column |
-| `niceic`, `gasSafe` | footer bottom bar (registration numbers) |
+| `email` | Get in touch |
+| `hours` | Get in touch |
+| `niceic`, `gasSafe` | the footer line (registration numbers) |
 | `phone`, `phoneText`, `address` | already filled from the Top Rated Electricians listing |
 
 ## Sources
@@ -29,18 +45,15 @@ Edit the `SETTINGS` block at the top of the last `<script>`. Anything left empty
 - Content: the Top Rated Electricians listing screenshot (5.0 from 10 Google reviews, 20+ years, NICEIC for electrical,
   Gas Safe for heating and plumbing, domestic and commercial, warranty on all jobs, services list, 3 FAQs, phone, address).
 - Written by us from that listing, so please check them: the one-line descriptions under each service, the four
-  "How a job works" steps, and the three FAQ answers (built from the listing's About text).
+  "How it works" steps, the three FAQ answers (built from the listing's About text), and the purpose sentence under each heading.
 - No customer review text, email address, opening hours or registration numbers were available, so none are shown.
 
 ## Motion
 
-Only `transform` and `opacity` are animated, except two small canvases (the wireframe house and the circuit band) and the
-stroke-draw on the line art. The canvases only run while on screen and in a visible tab.
+Only two things move: each block fades in once as you scroll, and the outline house in the hero turns slowly (it only runs
+while on screen and in a visible tab, and is capped at 30 frames a second). Nothing loops anywhere else.
 
 | Switch | Effect |
 | --- | --- |
-| `?fx=off` on the URL | turns every animation and canvas off, shows the final state |
-| `?lite=1` on the URL | the lighter version weaker phones get automatically (fade instead of stroke-draw, 30fps canvases) |
-| `prefers-reduced-motion` | honoured automatically: nothing moves, final state shown |
-
-The canvases also tune themselves: if a device can't hold the frame rate they drop to 30fps, then 1x resolution, then a still frame.
+| `?fx=off` on the URL | no fades and the house stays still |
+| `prefers-reduced-motion` | honoured automatically: the same as `?fx=off` |

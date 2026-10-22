@@ -6,7 +6,11 @@ type, thin light lines, one idea per section, and very little motion.
 
 Everything lives in `index.html` (CSS and JS inline) plus `images/`.
 
-## Run it
+## Live site
+
+https://mzorah11-ops.github.io/A1-Services/ (GitHub Pages, rebuilt from `main` about a minute after every push)
+
+## Run it locally
 
 ```
 node serve.mjs        # http://localhost:8086/
